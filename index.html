@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = 'stylesheet' type = 'text/css' href = 'css/style.css'>
+    </head>
+    <body>
+        <button id = 'reset_button' onclick = 'reset()'>End</button>
+        <img id = 'zombie' src = 'images/zombie.png'>
+        <img id = 'zombie2' src = 'images/zombie.png'>
+        <p class = 'score'>Score:<span id = 'score'>0</span></p>
+        <script>
+            let counter = 0;
+            let dead = false;
+            let dead2 = false;
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            function score() {
+                counter += 1;
+                document.getElementById('score').innerHTML = counter;
+            }
+            function zombiespawn1() {
+                dead = false;
+                document.getElementById('zombie').style.left = (Math.floor(Math.random()*(width-200))) + 'px';
+                document.getElementById('zombie').style.top = (Math.floor(Math.random()*(height-200))) + 'px';
+                document.getElementById('zombie').style.display = 'block';
+            }
+            function zombiespawn2() {
+                dead2 = false;
+                document.getElementById('zombie2').style.left = (Math.floor(Math.random()*(width-200))) + 'px';
+                document.getElementById('zombie2').style.top = (Math.floor(Math.random()*(height-200))) + 'px';
+                document.getElementById('zombie2').style.display = 'block';
+            }
+            function remove() {
+                document.getElementById('zombie').src = 'images/zombie.png';
+                document.getElementById('zombie2').src = 'images/zombie.png';
+            }
+            function zombiepop() {
+                if (dead === false) {
+                    let audio = new Audio('src/bloodsplatter.mp3');
+                    document.getElementById('zombie').src = 'images/zombie.gif';
+                    audio.play();
+                    score();
+                    dead = true;
+                }
+            }
+            function zombiepop2() {
+                if (dead2 === false) {
+                    let audio = new Audio('src/bloodsplatter.mp3');
+                    document.getElementById('zombie2').src = 'images/zombie2.gif';
+                    audio.play();
+                    score();
+                    dead2 = true;
+                }
+            }
+            function reset() {
+                counter = 0;
+                document.getElementById('score').innerHTML = counter;
+                document.getElementById('zombie').style.left = width*0.45 + 'px';
+                document.getElementById('zombie').style.top = height*0.3 + 'px';
+                document.getElementById('zombie2').style.left = (Math.floor(Math.random()*(width-200))) + 'px';
+                document.getElementById('zombie2').style.top = (Math.floor(Math.random()*(height-200))) + 'px';
+            }
+            function windowreset() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+            }
+            setInterval(zombiespawn1, 2000);
+            setInterval(zombiespawn2, 2000);
+            document.getElementById('zombie').onclick = zombiepop;
+            document.getElementById('zombie2').onclick = zombiepop2;
+            setInterval(remove, 2000);
+            setInterval(windowreset, 0);
+        </script>
+    </body>
+</html>

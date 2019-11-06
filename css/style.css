@@ -1,0 +1,32 @@
+#reset_button {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    font-size: xx-large;
+}
+#zombie {
+    width: 200px;
+    height: 200px;
+    position:absolute;
+    top: 30%;
+    left: 45%;
+    margin: auto;
+}
+#zombie2 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin: auto;
+}
+p.score {
+    color: red;
+    font-family: fantasy;
+    font-size: x-large;
+}
+body {
+    background-image: url('../images/halloweenbackground.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
